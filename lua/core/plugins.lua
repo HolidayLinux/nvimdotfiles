@@ -59,4 +59,5 @@ require("lazy").setup({
 		tag = "0.1.8",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
+	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 })

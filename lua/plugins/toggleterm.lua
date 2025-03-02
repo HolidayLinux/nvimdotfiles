@@ -1,37 +1,3 @@
-<<<<<<< HEAD
-require("toggleterm").setup({
-	size = 12,
-	shade_filetypes = {},
-	hide_numbers = true,
-	shade_terminals = true,
-	insert_mappings = true,
-	terminal_mappings = true,
-	start_in_insert = true,
-	persist_size = true,
-	persist_mode = true,
-	close_on_exit = true,
-	clear_env = false,
-	direction = "horizontal",
-	shading_factor = constants.shading_amount,
-	shading_ratio = constants.shading_ratio,
-	shell = vim.o.shell,
-	autochdir = false,
-	auto_scroll = true,
-	winbar = {
-		enabled = false,
-		name_formatter = function(term)
-			return fmt("%d:%s", term.id, term:_display_name())
-		end,
-	},
-	float_opts = {
-		winblend = 0,
-		title_pos = "left",
-	},
-	responsiveness = {
-		horizontal_breakpoint = 0,
-	},
-})
-=======
 local trim_spaces = true
 vim.keymap.set("v", "<space>s", function()
 	require("toggleterm").send_lines_to_terminal("single_line", trim_spaces, { args = vim.v.count })
@@ -62,4 +28,3 @@ vim.keymap.set("n", [[<leader><leader><c-\>]], function()
 	end)
 	vim.api.nvim_feedkeys("ggg@G''", "n", false)
 end)
->>>>>>> beba82d31ef07dc75d213a5ecebcc47dae3bc46d

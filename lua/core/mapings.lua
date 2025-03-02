@@ -8,7 +8,7 @@ vim.keymap.set("n", "<leader>o", ":Neotree git_status focus<CR>")
 
 -- Tabs
 vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>")
-
+vim.keymap.set("n", "<leader>t", ":ToggleTerm direction=float<CR>")
 -- Other
 vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>x", ":BufferLinePickClose<CR>")

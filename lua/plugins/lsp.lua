@@ -8,8 +8,41 @@ lspconfig.ts_ls.setup({})
 lspconfig.cssls.setup({
 	capabilities = capabilities,
 })
-local lspconfig = require("lspconfig")
-lspconfig.gopls.setup({})
+lspconfig.gopls.setup({
+	cmd = { "gopls" },
+	filetypes = { "go", "gomod", "gowork", "gotmpl" },
+	settings = {
+		gopls = {
+			gofumpt = true,
+			codelenses = {
+				gc_details = false,
+				generate = true,
+				regenerate_cgo = true,
+				run_govulncheck = true,
+				test = true,
+				tidy = true,
+				upgrade_dependency = true,
+				vendor = true,
+			},
+			["ui.inlayhint.hints"] = {
+				compositeLiteralFields = true,
+				constantValues = true,
+				parameterNames = true,
+			},
+			analyses = {
+				nilness = true,
+				unusedparams = true,
+				unusedwrite = true,
+				useany = true,
+			},
+			usePlaceholders = true,
+			completeUnimported = true,
+			staticcheck = true,
+			directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules", "-.nvim" },
+			semanticTokens = true,
+		},
+	},
+})
 --
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -17,7 +50,11 @@ vim.keymap.set("n", "<leader>lD", vim.diagnostic.open_float)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.setloclist)
-
+vim.keymap.set("n", "yok", function()
+  local enabled = not vim.lsp.inlay_hint.is_enabled({})
+  vim.lsp.inlay_hint.enable(enabled)
+  vim.notify("Inlay hints: " .. (enabled and " on" or "off"))
+end, { buffer = 0, desc = "Toggle inlay hints" })
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {

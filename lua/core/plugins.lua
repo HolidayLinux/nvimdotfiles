@@ -29,11 +29,13 @@ require("lazy").setup({
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	{
 		"neovim/nvim-lspconfig",
+		opts = {
+			inlay_hints = { enabled = true },
+		},
 		config = function()
 			require("nvim-treesitter.install").compilers = { "clang" }
 		end,
 	},
-	{ "neovim/nvim-lspconfig" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/cmp-buffer" },
 	{ "hrsh7th/cmp-path" },

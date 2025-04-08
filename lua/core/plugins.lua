@@ -44,6 +44,12 @@ require("lazy").setup({
 	{
 		"williamboman/mason.nvim",
 	},
+	{
+		"hrsh7th/cmp-vsnip",
+	},
+	{
+		"hrsh7th/vim-vsnip",
+	},
 	{ "nvimtools/none-ls.nvim", dependencies = {
 		"nvimtools/none-ls-extras.nvim",
 	} },

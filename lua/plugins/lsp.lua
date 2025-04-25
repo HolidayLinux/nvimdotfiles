@@ -1,14 +1,13 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+--capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 -- Sntup language servers.
 local util = require("lspconfig/util")
-local lspconfig = require("lspconfig")
-lspconfig.pyright.setup({})
-lspconfig.ts_ls.setup({})
-lspconfig.cssls.setup({
+--local lspconfig = require("lspconfig")
+vim.lsp.enable({ "ts_ls", "cssls", "pyright", "gopls" })
+vim.lsp.config("cssls", {
 	capabilities = capabilities,
 })
-lspconfig.gopls.setup({
+vim.lsp.config("gopls", {
 	cmd = { "gopls" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
 	settings = {

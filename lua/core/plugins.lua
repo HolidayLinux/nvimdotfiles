@@ -29,9 +29,6 @@ require("lazy").setup({
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	{
 		"neovim/nvim-lspconfig",
-		opts = {
-			inlay_hints = { enabled = true },
-		},
 		config = function()
 			require("nvim-treesitter.install").compilers = { "clang" }
 		end,
@@ -81,5 +78,12 @@ require("lazy").setup({
 		config = true,
 		-- use opts = {} for passing setup options
 		-- this is equivalent to setup({}) function
+	}, -- Lazy
+	{
+		"dgagn/diagflow.nvim",
+		event = 'LspAttach', 
+		opts = {
+            placement = "inline",
+        },
 	},
 })

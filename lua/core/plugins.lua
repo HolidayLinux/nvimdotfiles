@@ -15,7 +15,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{ "phaazon/hop.nvim" },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
@@ -34,7 +33,6 @@ require("lazy").setup({
 			require("nvim-treesitter.install").compilers = { "clang" }
 		end,
 	},
-	{ "neovim/nvim-lspconfig" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/cmp-buffer" },
 	{ "hrsh7th/cmp-path" },
@@ -42,6 +40,12 @@ require("lazy").setup({
 	{ "hrsh7th/nvim-cmp" },
 	{
 		"williamboman/mason.nvim",
+	},
+	{
+		"hrsh7th/cmp-vsnip",
+	},
+	{
+		"hrsh7th/vim-vsnip",
 	},
 	{ "nvimtools/none-ls.nvim", dependencies = {
 		"nvimtools/none-ls-extras.nvim",
@@ -61,4 +65,25 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
+	{
+		"MarcHamamji/runner.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			dependencies = { "nvim-lua/plenary.nvim" },
+		},
+	},
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+		-- use opts = {} for passing setup options
+		-- this is equivalent to setup({}) function
+	}, -- Lazy
+	{
+		"dgagn/diagflow.nvim",
+		event = 'LspAttach', 
+		opts = {
+            placement = "inline",
+        },
+	},
 })

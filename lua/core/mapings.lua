@@ -17,3 +17,5 @@ vim.keymap.set("n", "<leader>X", ":BufferLineCloseRight<CR>")
 vim.keymap.set("n", "<leader>s", ":BufferLineSortByTabs<CR>")
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
+--Runner
+vim.keymap.set("n", "<leader>rr", ":Runner <CR>", { noremap = true, silent = false })

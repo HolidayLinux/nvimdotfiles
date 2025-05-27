@@ -3,9 +3,32 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- Sntup language servers.
 local util = require("lspconfig/util")
 --local lspconfig = require("lspconfig")
-vim.lsp.enable({ "ts_ls", "cssls", "pyright", "gopls" })
+vim.lsp.enable({ "ts_ls", "cssls", "pyright", "gopls", "rust_analyzer" })
 vim.lsp.config("cssls", {
 	capabilities = capabilities,
+})
+vim.lsp.config("rust_analyzer", {
+    capabilities = capabilities,
+    settings = {
+        ["rust-analyzer"] = {
+            cargo = {
+                loadOutDirsFromCheck = true,
+                allFeatures = true,
+            },
+            procMacro = {
+                enable = true,
+            },
+            checkOnSave = {
+                command = "clippy",
+            },
+            inlayHints = {
+                typeHints = true,
+                chainingHints = true,
+                parameterHints = true,
+                bindingModeHints = true,
+            },
+        },
+    },
 })
 vim.lsp.config("gopls", {
 	cmd = { "gopls" },

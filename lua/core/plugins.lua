@@ -42,9 +42,6 @@ require("lazy").setup({
 		"williamboman/mason.nvim",
 	},
 	{
-		"hrsh7th/cmp-vsnip",
-	},
-	{
 		"hrsh7th/vim-vsnip",
 	},
 	{ "nvimtools/none-ls.nvim", dependencies = {
@@ -86,4 +83,17 @@ require("lazy").setup({
             placement = "inline",
         },
 	},
+    {
+  'mrcjkb/rustaceanvim',
+  version = '^6', -- Recommended
+  lazy = false, -- This plugin is already lazy
+    },
+    {
+     "github/copilot.vim",
+     lazy = false,
+     config = function()
+       vim.g.copilot_no_tab_map = true
+       vim.g.copilot_assume_mapped = true
+     end
+   },
 })

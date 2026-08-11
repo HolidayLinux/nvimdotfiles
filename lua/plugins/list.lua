@@ -1,5 +1,14 @@
 return {
   {
+    "folke/trouble.nvim",
+    -- opts will be merged with the parent spec
+    opts = {
+      height = 10, -- Фиксированная высота окна
+      width = 50, -- Фиксированная ширина окна
+      wrap = true, -- Перенос длинных строк
+    },
+  },
+  {
     "MarcHamamji/runner.nvim",
     dependencies = {
       "nvim-telescope/telescope.nvim",
